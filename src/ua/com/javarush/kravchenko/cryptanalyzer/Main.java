@@ -1,4 +1,4 @@
-package ua.com.javarush.kravchenko.cryptoanalyzer;
+package ua.com.javarush.kravchenko.cryptanalyzer;
 
 public class Main {
     public static void main(String[] args) {
