@@ -1,6 +1,7 @@
-# CryptAnalyzer
+# CryptAnalyzer<br>
 
-**This is the final project of the first "Java Syntax" module at JavaRush University.**  
+**This is the final project of the first "Java Syntax" module at JavaRush University.**  <br>
+Created by Serge Kravchenko ("November" - "Java Syntax").<br>
 ##
 The program operates in several modes:<br>
 **1.Text Ecryption using a Caesar cipher.**<br>
