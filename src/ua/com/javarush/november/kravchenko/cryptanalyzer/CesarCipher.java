@@ -1,8 +1,9 @@
-package ua.com.javarush.kravchenko.cryptanalyzer;
+package ua.com.javarush.november.kravchenko.cryptanalyzer;
 
 public class CesarCipher {
 
-    private static final String ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" + "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    private static final String ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+            + "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
     public String encrypt(String string, int key) {
         StringBuilder stringBuilder = new StringBuilder();
