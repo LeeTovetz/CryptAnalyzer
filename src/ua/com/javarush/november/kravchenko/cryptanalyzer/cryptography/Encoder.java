@@ -1,0 +1,37 @@
+package ua.com.javarush.november.kravchenko.cryptanalyzer.cryptography;
+
+import java.io.*;
+
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.Alphabet.ALPHABET;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.Alphabet.ALPHABET_SIZE;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.ConsoleMessage.ERROR_READ_FILE;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.ConsoleMessage.FILE_NOT_FOUND;
+
+public class Encoder {
+    public void startEncryption(String inputFilePath, String outputFilePath, int encryptionKey) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))
+        ) {
+            while (reader.ready()) {
+                char characterFromFile = (char) reader.read();
+
+                int indexCharacterFromAlphabet = ALPHABET.indexOf(characterFromFile);
+                if (indexCharacterFromAlphabet == -1) {
+                    writer.write(characterFromFile);
+                } else {
+                    int indexForEncryption = indexCharacterFromAlphabet + encryptionKey;
+                    if (indexForEncryption >= ALPHABET_SIZE) {
+                        indexForEncryption = indexForEncryption - ALPHABET_SIZE;
+                    }
+                    writer.write(ALPHABET.get(indexForEncryption));
+                }
+            }
+            writer.flush();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(FILE_NOT_FOUND);
+        } catch (IOException e) {
+            System.out.println(ERROR_READ_FILE);
+        }
+    }
+}
