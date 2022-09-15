@@ -17,6 +17,4 @@ There is a search of all keys. The decoder decrypts the text based on the metric
 **Example: After going through all the keys, the decoder analyzed that with the key 11 in the text, words like "they", "are", "am", "an" occured most often.**<br> 
 Therefore, 11 is the key you are looking for. The decryptor then decrypts the text using key 11.<br>
 <br>
-**4.Text Decipherment using method of frequency statistical analysis method.**<br>
-Frequency analysis assumes that the frequency of occurrence of a given letter of the alphabet in sufficiently long texts is the same for different texts of the same language. If there is a symbol in the ciphertext with a similar probability of occurrence, then we can assume that it is the specified encrypted letter.<br>
-**Example: In the encrypted text, the letter "c" is found most often. After analyzing the text of another work by the same author, the decoder calculated that the letter "e" is more common in this text. Accordingly, it changes "c" to "e".**<br>
+
