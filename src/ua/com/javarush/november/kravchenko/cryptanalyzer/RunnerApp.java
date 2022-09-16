@@ -1,8 +1,8 @@
 package ua.com.javarush.november.kravchenko.cryptanalyzer;
 
-import ua.com.javarush.november.kravchenko.cryptanalyzer.consoleui.ConsoleMenu;
+import ua.com.javarush.november.kravchenko.cryptanalyzer.consol.ConsoleMenu;
 
-public class Main {
+public class RunnerApp {
     public static void main(String[] args) {
         new ConsoleMenu().startDialog();
     }

@@ -1,11 +1,11 @@
-package ua.com.javarush.november.kravchenko.cryptanalyzer.cryptography;
+package ua.com.javarush.november.kravchenko.cryptanalyzer.commands;
 
 import java.io.*;
 
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.Alphabet.ALPHABET;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.Alphabet.ALPHABET_SIZE;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.ConsoleMessage.ERROR_READ_FILE;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.ConsoleMessage.FILE_NOT_FOUND;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.ALPHABET;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.ALPHABET_SIZE;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.MessageConsole.ERROR_READ;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.MessageConsole.FILE_NOT_FOUND;
 
 public class Decoder {
     public void startDecryption(String inputFilePath, String outputFilePath, int encryptionKey) {
@@ -30,7 +30,7 @@ public class Decoder {
         } catch (FileNotFoundException e) {
             System.out.println(FILE_NOT_FOUND);
         } catch (IOException e) {
-            System.out.println(ERROR_READ_FILE);
+            System.out.println(ERROR_READ);
         }
     }
 }

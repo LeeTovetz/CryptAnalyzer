@@ -1,4 +1,4 @@
-package ua.com.javarush.november.kravchenko.cryptanalyzer.cryptography;
+package ua.com.javarush.november.kravchenko.cryptanalyzer.commands;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -8,10 +8,10 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.Alphabet.ALPHABET;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.Alphabet.ALPHABET_SIZE;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.ConsoleMessage.ERROR_READ_FILE;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.ConsoleMessage.FILE_NOT_FOUND;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.ALPHABET;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.ALPHABET_SIZE;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.MessageConsole.ERROR_READ;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.MessageConsole.FILE_NOT_FOUND;
 
 public class BruteForceDecoder {
     public static int calculatingEncryptionKey(String inputFilePath) {
@@ -56,7 +56,7 @@ public class BruteForceDecoder {
         } catch (FileNotFoundException e) {
             System.out.println(FILE_NOT_FOUND);
         } catch (IOException e) {
-            System.out.println(ERROR_READ_FILE);
+            System.out.println(ERROR_READ);
         }
         return encryptionKey;
     }

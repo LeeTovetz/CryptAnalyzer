@@ -1,19 +1,19 @@
-package ua.com.javarush.november.kravchenko.cryptanalyzer.consoleui;
+package ua.com.javarush.november.kravchenko.cryptanalyzer.consol;
 
-import ua.com.javarush.november.kravchenko.cryptanalyzer.cryptography.BruteForceDecoder;
-import ua.com.javarush.november.kravchenko.cryptanalyzer.cryptography.Decoder;
-import ua.com.javarush.november.kravchenko.cryptanalyzer.cryptography.Encoder;
+import ua.com.javarush.november.kravchenko.cryptanalyzer.commands.BruteForceDecoder;
+import ua.com.javarush.november.kravchenko.cryptanalyzer.commands.Decoder;
+import ua.com.javarush.november.kravchenko.cryptanalyzer.commands.Encoder;
 
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.util.Scanner;
 
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.Alphabet.ALPHABET_SIZE;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.Common.DASH;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.Common.DOUBLE_SLASH;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.ConsoleMessage.*;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.ConsoleOption.*;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.ALPHABET_SIZE;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.MessageConsole.*;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.ConsoleVersion.*;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.DASH;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.DOUBLE_SLASH;
 
 public class ConsoleMenu {
     private final Scanner console = new Scanner(System.in);

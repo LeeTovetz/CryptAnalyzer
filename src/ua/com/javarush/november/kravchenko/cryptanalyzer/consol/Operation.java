@@ -1,6 +1,6 @@
-package ua.com.javarush.november.kravchenko.cryptanalyzer.consoleui;
+package ua.com.javarush.november.kravchenko.cryptanalyzer.consol;
 
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.constants.ConsoleMessage.ILLEGAL_OPERATION;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.MessageConsole.ILLEGAL_OPERATION;
 
 public enum Operation {
     EXIT("0", "Exit"),

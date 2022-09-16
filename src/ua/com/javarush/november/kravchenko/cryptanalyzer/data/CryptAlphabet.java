@@ -1,10 +1,11 @@
-package ua.com.javarush.november.kravchenko.cryptanalyzer.constants;
+package ua.com.javarush.november.kravchenko.cryptanalyzer.data;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class Alphabet {
-    private Alphabet() {
+public class CryptAlphabet {
+
+    private CryptAlphabet() {
     }
 
     public static final List<Character> ALPHABET = Arrays.asList('а', 'б', 'в',
@@ -13,4 +14,7 @@ public class Alphabet {
             ':', '!', '?', ' ');
 
     public static final int ALPHABET_SIZE = ALPHABET.size();
+
+    public static final String DOUBLE_SLASH = "\\";
+    public static final String DASH = " - ";
 }
