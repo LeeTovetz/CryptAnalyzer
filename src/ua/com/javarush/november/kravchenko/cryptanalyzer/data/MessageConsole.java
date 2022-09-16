@@ -1,12 +1,7 @@
 package ua.com.javarush.november.kravchenko.cryptanalyzer.data;
 
 public class MessageConsole {
-    public static final String GREETINGS =
-            """                     
-                    *  Welcome to CryptAnalyzer  *
-                       Let's encrypt something)))
-                    * * * * * * * * * * * * * * * *     
-                    """;
+    public static final String GREETINGS = "*  Welcome to CryptAnalyzer  *";
     public static final String EXIT = "* Exit the program *";
     public static final String ILLEGAL_OPERATION = "* Illegal operation *";
     public static final String INVALID_KEY = "* Invalid encryption key *";

@@ -1,8 +1,9 @@
 package ua.com.javarush.november.kravchenko.cryptanalyzer.consol;
 
-import ua.com.javarush.november.kravchenko.cryptanalyzer.commands.BruteForceDecoder;
-import ua.com.javarush.november.kravchenko.cryptanalyzer.commands.Decoder;
-import ua.com.javarush.november.kravchenko.cryptanalyzer.commands.Encoder;
+import ua.com.javarush.november.kravchenko.cryptanalyzer.commands.BruteForce;
+import ua.com.javarush.november.kravchenko.cryptanalyzer.commands.Decod;
+import ua.com.javarush.november.kravchenko.cryptanalyzer.commands.Encod;
+import ua.com.javarush.november.kravchenko.cryptanalyzer.data.Message;
 
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
@@ -11,40 +12,48 @@ import java.util.Scanner;
 
 import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.ALPHABET_SIZE;
 import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.MessageConsole.*;
-import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.ConsoleVersion.*;
+import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.ConslVersion.*;
 import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.DASH;
 import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.DOUBLE_SLASH;
 
-public class ConsoleMenu {
+public class ConslMenu {
     private final Scanner console = new Scanner(System.in);
 
-    public void startDialog() {
-        System.out.println(GREETINGS);
+    public void start() {
+        Message.print(GREETINGS);
         boolean isWorking = true;
 
         while (isWorking) {
             for (Operation operation : Operation.values()) {
-                System.out.println(operation.getOperationToken() + DASH + operation.getDescription());
+                Message.print(operation.getOperationToken() + DASH + operation.getDescription());
             }
-            System.out.print(ENTER_OPTIONS);
+            Message.printLine(ENTER_OPTIONS);
             String selectedOption = console.nextLine();
 
             try {
                 boolean withBruteForce = true;
                 switch (Operation.getOperationByToken(selectedOption)) {
-                    case EXIT -> isWorking = processExit();
-                    case ENCODER -> processEncryption();
-                    case DECODER -> processDecryption(!withBruteForce);
-                    case BRUTEFORCE -> processDecryption(withBruteForce);
+                    case EXIT:
+                        isWorking = processExit();
+                        break;
+                    case ENCODER:
+                        processEncryption();
+                        break;
+                    case DECODER:
+                        processDecryption(!withBruteForce);
+                        break;
+                    case BRUTEFORCE:
+                        processDecryption(withBruteForce);
+                        break;
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                Message.print(e.getMessage());
             }
         }
     }
 
     private boolean processExit() {
-        System.out.println(EXIT);
+        Message.print(EXIT);
         console.close();
         return false;
     }
@@ -55,10 +64,10 @@ public class ConsoleMenu {
         int encryptionKey = enterEncryptionKey();
 
         try {
-            new Encoder().startEncryption(inputFilePath, outputFilePath, encryptionKey);
-            System.out.println(FILE_ENCRYPTED + outputFilePath);
+            new Encod().startEncryption(inputFilePath, outputFilePath, encryptionKey);
+            Message.print(FILE_ENCRYPTED + outputFilePath);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Message.print(e.getMessage());
         }
     }
 
@@ -70,14 +79,14 @@ public class ConsoleMenu {
         if (!withBruteForce) {
             encryptionKey = enterEncryptionKey();
         } else {
-            encryptionKey = BruteForceDecoder.calculatingEncryptionKey(inputFilePath);
+            encryptionKey = BruteForce.calculatingEncryptionKey(inputFilePath);
         }
 
         try {
-            new Decoder().startDecryption(inputFilePath, outputFilePath, encryptionKey);
-            System.out.println(FILE_DECRYPTED + outputFilePath);
+            new Decod().startDecryption(inputFilePath, outputFilePath, encryptionKey);
+            Message.print(FILE_DECRYPTED + outputFilePath);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Message.print(e.getMessage());
         }
     }
 
@@ -86,17 +95,17 @@ public class ConsoleMenu {
         String inputFilePath = "";
 
         while (isWorking) {
-            System.out.print(ENTER_INPUT_FILE);
+            Message.printLine(ENTER_INPUT_FILE);
             inputFilePath = console.nextLine();
 
             try {
                 if (!Files.isRegularFile(Path.of(inputFilePath))) {
-                    System.out.println(FILE_NOT_FOUND);
+                    Message.print(FILE_NOT_FOUND);
                 } else {
                     isWorking = false;
                 }
             } catch (InvalidPathException e) {
-                System.out.println(FILE_NOT_FOUND);
+                Message.print(FILE_NOT_FOUND);
             }
         }
         return inputFilePath;
@@ -107,20 +116,20 @@ public class ConsoleMenu {
         String outputFilePath = "";
 
         while (isWorking) {
-            System.out.print(ENTER_OUTPUT_FOLDER);
+            Message.printLine(ENTER_OUTPUT_FOLDER);
             Path folderPath = Path.of(console.nextLine());
 
             try {
                 if (Files.exists(folderPath) && Files.isDirectory(folderPath)) {
-                    System.out.print(ENTER_OUTPUT_FILE_NAME);
+                    Message.printLine(ENTER_OUTPUT_FILE_NAME);
                     String fileName = console.nextLine() + ".txt";
                     outputFilePath = folderPath + DOUBLE_SLASH + fileName;
                     isWorking = false;
                 } else {
-                    System.out.println(DIRECTORY_NOT_FOUND);
+                    Message.print(DIRECTORY_NOT_FOUND);
                 }
             } catch (InvalidPathException e) {
-                System.out.println(DIRECTORY_NOT_FOUND);
+                Message.print(DIRECTORY_NOT_FOUND);
             }
         }
         return outputFilePath;
@@ -131,7 +140,7 @@ public class ConsoleMenu {
         int encryptionKey = 0;
 
         while (isWorking) {
-            System.out.print(ENTER_ENCRYPTION_KEY);
+            Message.printLine(ENTER_ENCRYPTION_KEY);
             try {
                 encryptionKey = Integer.parseInt(console.nextLine());
                 if (encryptionKey <= 0 || encryptionKey >= ALPHABET_SIZE) {
@@ -140,7 +149,7 @@ public class ConsoleMenu {
                     isWorking = false;
                 }
             } catch (NumberFormatException e) {
-                System.out.println(INVALID_KEY);
+                Message.print(INVALID_KEY);
             }
         }
         return encryptionKey;

@@ -1,5 +1,7 @@
 package ua.com.javarush.november.kravchenko.cryptanalyzer.commands;
 
+import ua.com.javarush.november.kravchenko.cryptanalyzer.data.Message;
+
 import java.io.*;
 
 import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphabet.ALPHABET;
@@ -7,7 +9,7 @@ import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.CryptAlphab
 import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.MessageConsole.ERROR_READ;
 import static ua.com.javarush.november.kravchenko.cryptanalyzer.data.MessageConsole.FILE_NOT_FOUND;
 
-public class Encoder {
+public class Encod {
     public void startEncryption(String inputFilePath, String outputFilePath, int encryptionKey) {
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
              BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))
@@ -29,9 +31,9 @@ public class Encoder {
             writer.flush();
 
         } catch (FileNotFoundException e) {
-            System.out.println(FILE_NOT_FOUND);
+            Message.print(FILE_NOT_FOUND);
         } catch (IOException e) {
-            System.out.println(ERROR_READ);
+            Message.print(ERROR_READ);
         }
     }
 }
