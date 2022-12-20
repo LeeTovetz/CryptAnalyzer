@@ -1,6 +1,6 @@
 # CryptAnalyzer<br>
 
-**This is the final project of the first "Java Syntax" module at JavaRush University.**  <br>
+**This is the final project of the first <a href="https://github.com/LeeTovetz/JRU-JavaSyntax" >"Java Syntax"</a> module at JavaRush University.**  <br>
 Created by Serge Kravchenko (group of students "November").<br>
 ##
 The program operates in several modes:<br>
